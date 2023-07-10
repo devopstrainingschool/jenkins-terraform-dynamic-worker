@@ -1,5 +1,8 @@
 terraform {
   required_providers {
+     ansible = {
+      source = "nbering/ansible"
+    }
     
     aws = {
       source = "hashicorp/aws"
