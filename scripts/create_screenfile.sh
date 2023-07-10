@@ -8,11 +8,11 @@ frontend1=`/usr/local/bin/terraform.py| jq '.frontend.hosts[1]'`
 db0=`/usr/local/bin/terraform.py| jq '.db.hosts[0]'`
 db1=`/usr/local/bin/terraform.py| jq '.db.hosts[1]'`
 
-echo "screen ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem ubuntu@$bastion0 -t \"echo \"PS1=bastion0\"$\"\">>~/.bashrc;bash\" " >superscreen
-echo "screen ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem ubuntu@$bastion1 -t \"echo \"PS1=bastion1\"$\"\">>~/.bashrc;bash\" " >> superscreen
-echo "screen ssh -i /tmp/mykey.pem ubuntu@$frontend0 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem   -W %h:%p -q ubuntu@$bastion0\" -t \"echo \"PS1=frontend1\"$\"\">>~/.bashrc;bash\"" >>superscreen
-echo "screen ssh -i /tmp/mykey.pem ubuntu@$frontend1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=frontend2\"$\"\">>~/.bashrc;bash\"" >>superscreen
-echo "screen ssh -i /tmp/mykey.pem ubuntu@$db0 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem   -W %h:%p -q ubuntu@$bastion0\" -t \"echo \"PS1=db1\"$\"\">>~/.bashrc;bash\"" >>superscreen
-echo "screen ssh -i /tmp/mykey.pem ubuntu@$db1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/mykey.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=db2\"$\"\">>~/.bashrc;bash\"" >>superscreen
+echo "screen ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem ubuntu@$bastion0 -t \"echo \"PS1=bastion0\"$\"\">>~/.bashrc;bash\" " >superscreen
+echo "screen ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem ubuntu@$bastion1 -t \"echo \"PS1=bastion1\"$\"\">>~/.bashrc;bash\" " >> superscreen
+echo "screen ssh -i /tmp/anael centos@$frontend0 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem   -W %h:%p -q ubuntu@$bastion0\" -t \"echo \"PS1=frontend1\"$\"\">>~/.bashrc;bash\"" >>superscreen
+echo "screen ssh -i /tmp/anael.pem centos@$frontend1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=frontend2\"$\"\">>~/.bashrc;bash\"" >>superscreen
+echo "screen ssh -i /tmp/anael.pem centos@$db0 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem   -W %h:%p -q ubuntu@$bastion0\" -t \"echo \"PS1=db1\"$\"\">>~/.bashrc;bash\"" >>superscreen
+echo "screen ssh -i /tmp/anael.pem centos@$db1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i /tmp/anael.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=db2\"$\"\">>~/.bashrc;bash\"" >>superscreen
 
 
