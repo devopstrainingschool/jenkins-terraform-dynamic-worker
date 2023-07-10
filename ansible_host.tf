@@ -7,6 +7,9 @@ resource "ansible_host" "BASTIONHOST_A" {
       ansible_ssh_private_key_file="/tmp/anael.pem"
       ansible_python_interpreter="/usr/bin/python3"
   }
+  depends_on = [
+      aws_lb.lb
+  ]
 }
 
 
