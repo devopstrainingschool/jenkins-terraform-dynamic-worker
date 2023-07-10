@@ -24,7 +24,7 @@ resource "aws_instance" "bastion" {
     private_key  = tls_private_key.anael.private_key_pem #"${file("anael.pem")}" 
    }
   depends_on = [
-    aws_key_pair.keypair
+    aws_key_pair.anael
   ]
     tags = {
         Name = "Bastion"
