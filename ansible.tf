@@ -2,7 +2,7 @@
 
 resource "ansible_host" "FRONTEND001" {
   inventory_hostname = "${aws_instance.jenkins.private_dns}"
-  groups = ["Frontend"]
+  groups = ["frontend"]
   vars = {
       ansible_user = "centos"
       role = "slave"
