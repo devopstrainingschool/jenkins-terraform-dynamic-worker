@@ -14,4 +14,3 @@ echo "screen ssh -i anael.pem ubuntu@$frontend0 -o StrictHostKeyChecking=no -o P
 echo "screen ssh -i anael.pem ubuntu@$frontend1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i anael.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=frontend2\"$\"\">>~/.bashrc;bash\"" >>superscreen
 echo "screen ssh -i anael.pem ubuntu@$db0 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i anael.pem   -W %h:%p -q ubuntu@$bastion0\" -t \"echo \"PS1=db1\"$\"\">>~/.bashrc;bash\"" >>superscreen
 echo "screen ssh -i anael.pem ubuntu@$db1 -o StrictHostKeyChecking=no -o ProxyCommand=\"ssh -o StrictHostKeyChecking=no -i anael.pem   -W %h:%p -q ubuntu@$bastion1\" -t \"echo \"PS1=db2\"$\"\">>~/.bashrc;bash\"" >>superscreen
-
