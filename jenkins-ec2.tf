@@ -6,7 +6,7 @@ resource "aws_instance" "jenkins" {
     key_name = "anael1"
     vpc_security_group_ids = ["${aws_security_group.jenkins.id}"]
     #this will attach the role to ec2 using profile
-    iam_instance_profile = aws_iam_instance_profile.jenkins.name
+    iam_instance_profile = aws_iam_instance_profile.jenkins5.name
     tags = {
         Name = "jenkins-ec2"
        
