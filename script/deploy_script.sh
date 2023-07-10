@@ -8,4 +8,5 @@ terraform output  -json|jq .mykey.value -r >anael.pem && chmod 600 anael.pem
 
 export ANSIBLE_HOST_KEY_CHECKING=false
 
-sudo ansible-playbook -i /usr/local/bin/terraform.py deploy/jenkins.yml
+ansible-playbook -i /usr/local/bin/terraform.py deploy/bastion.yml
+ansible-playbook -i /usr/local/bin/terraform.py deploy/jenkins.yml

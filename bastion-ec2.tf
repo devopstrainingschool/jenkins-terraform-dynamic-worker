@@ -1,5 +1,5 @@
 resource "aws_instance" "bastion" {
-    ami = "ami-05a36e1502605b4aa"
+    ami = "ami-0283a57753b18025b"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.public-bastion.id}"
     key_name = aws_key_pair.anael.key_name
@@ -18,7 +18,7 @@ resource "aws_instance" "bastion" {
     connection {
     type         = "ssh"
     host         = self.public_ip
-    user         = "centos" # change user"ec2-user" for amz
+    user         = "ubuntu" # change user"ec2-user" for amz
     timeout = "2m"
     agent = false
     private_key  = tls_private_key.anael.private_key_pem #"${file("anael.pem")}" 
