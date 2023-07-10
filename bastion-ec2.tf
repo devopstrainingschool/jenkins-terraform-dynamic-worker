@@ -6,6 +6,27 @@ resource "aws_instance" "bastion" {
     key_name = "anael1"
     associate_public_ip_address = "true"
     vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
+    provisioner "file" {
+        source      = "anael.pem"
+        destination = "anael.pem"
+      }
+    provisioner "remote-exec"  {
+    inline  = [
+      "sudo chmod 400 anael.pem ",
+    
+      ]
+   }
+    connection {
+    type         = "ssh"
+    host         = self.public_ip
+    user         = "centos" # change user"ec2-user" for amz
+    timeout = "2m"
+    agent = false
+    private_key  = tls_private_key.anael.private_key_pem #"${file("anael.pem")}" 
+   }
+  depends_on = [
+    aws_key_pair.anael
+  ]
     tags = {
         Name = "Batsion-ec2"
        
