@@ -33,7 +33,7 @@ resource "aws_security_group" "SG-bastionhosts" {
 
 
 # DB sg 
-resource "aws_security_group" "SG-jenkins" {
+resource "aws_security_group" "jenkins" {
     name = "SG-jenkins"
     vpc_id = "${aws_vpc.main.id}"
     description = "Security group for backend servers"

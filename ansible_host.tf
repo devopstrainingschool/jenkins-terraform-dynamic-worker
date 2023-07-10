@@ -9,9 +9,9 @@ resource "ansible_host" "BASTIONHOST_A" {
   }
 }
 
-resource "ansible_host" "SQL001" {
-  inventory_hostname = "${aws_instance.SQL_A.private_dns}"
-  groups = ["db"]
+resource "ansible_host" "jenkins" {
+  inventory_hostname = "${aws_instance.jenkins.private_dns}"
+  groups = ["jenkins"]
   vars = {
       ansible_user = "ubuntu"
       role = "master"
@@ -19,6 +19,6 @@ resource "ansible_host" "SQL001" {
       ansible_ssh_private_key_file="/tmp/anael_premier.pem"
       ansible_python_interpreter="/usr/bin/python3"
       proxy = "${aws_instance.BASTIONHOST_A.private_ip}"
-      subnet = "${aws_subnet.private-db.cidr_block}"
+      subnet = "${aws_subnet.jenkins.cidr_block}"
   }
 }

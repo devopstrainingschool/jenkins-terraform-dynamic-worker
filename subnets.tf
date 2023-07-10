@@ -20,7 +20,7 @@ resource "aws_subnet" "public-nat" {
 
 
 # DB subnet
-resource "aws_subnet" "private-jenkins" {
+resource "aws_subnet" "jenkins" {
   availability_zone = "us-east-2b"
   cidr_block = "10.0.11.0/24"
   map_public_ip_on_launch = false

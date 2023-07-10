@@ -1,6 +1,6 @@
 ---
 - name : Install postgresql software on db nodes and init master
-  hosts: db
+  hosts: jenkins
   become: yes
   ignore_errors: true
   #gather_facts: no
