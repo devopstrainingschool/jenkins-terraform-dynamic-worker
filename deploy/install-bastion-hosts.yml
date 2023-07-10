@@ -6,7 +6,7 @@
   ignore_errors: true
   become_user: root
   tasks :
-        - name: copy generated key with owner and permissions
+    - name: copy generated key with owner and permissions
       copy:
         src: /tmp/anael_premier.pem
         dest: /tmp/anael_premier.pem
