@@ -1,25 +1,26 @@
-resource "aws_route_table" "default" {
-  vpc_id = "${aws_vpc.main.id}"
+# PUBLIC ROUTE 
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.jenkins.id
 
   route {
       cidr_block = "0.0.0.0/0"
-      gateway_id = "${aws_internet_gateway.internet_gateway.id}"
+      gateway_id = aws_internet_gateway.igw.id
   }
 
   tags = {
-      Name = "Default route table to internet"
+      Name = "Public route table"
   }
 }
 
-# No need to define local route since it is there by default
-# Next route through NAT
+# NAT ROUTE 
 resource "aws_route_table" "nat" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.jenkins.id
   route {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.nat.id
   }
    tags = {
-      Name = "Default route table to NAT"
+      Name = " route table private"
   }
 }
+
