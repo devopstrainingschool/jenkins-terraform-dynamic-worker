@@ -4,7 +4,7 @@ terraform apply --auto-approve
 
 sleep 120
 
-terraform output  -json|jq .mykey.value -r >/tmp/anael.pem && chmod 600 /tmp/anael.pem
+terraform output  -json|jq .mykey.value -r >/tmp/anael_premier.pem && chmod 600 /tmp/anael_premier.pem
 
 export ANSIBLE_HOST_KEY_CHECKING=false
 

@@ -1,7 +1,3 @@
-
-provider "aws" {
-    region  = "us-east-2"
-}
 terraform {
   required_providers {
     ansible = {
@@ -14,5 +10,6 @@ terraform {
     }
   }
 }
-
-provider "ansible" {}
+provider "aws" {
+    region  = "${var.region}"
+}
