@@ -11,7 +11,7 @@ resource "aws_instance" "bastion" {
       }
     provisioner "remote-exec"  {
     inline  = [
-      "sudo chmod 600 anael.pem ",
+      "sudo chmod 400 anael.pem ",
     
       ]
    }
