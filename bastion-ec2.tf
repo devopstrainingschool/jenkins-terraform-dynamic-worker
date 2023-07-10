@@ -1,12 +1,13 @@
-resource "aws_instance" "FRONTEND_A" {
-    ami = "${lookup(var.aws_ubuntu_amis,var.region)}"
-    subnet_id = "${aws_subnet.public-frontend_az-a.id}"
-    key_name = "${aws_key_pair.keypair.key_name}"
-    vpc_security_group_ids = ["${aws_security_group.SG-frontendservers.id}"]
-    instance_type = "t2.medium"
+resource "aws_instance" "bastion" {
+    ami = "ami-05a36e1502605b4aa"
+    instance_type = "t2.micro"
+    subnet_id = "${aws_subnet.public-bastion.id}"
+    key_name = aws_key_pair.anael.key_name
+    #key_name = "anael1"
+    associate_public_ip_address = "true"
+    vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
     tags = {
-        Name = "${var.environment}-FRONTEND001"
-        Environment = "${var.environment}"
-        sshUser = "ubuntu"
+        Name = "Batsion-ec2"
+       
     }
 }

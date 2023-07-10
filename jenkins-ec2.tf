@@ -1,12 +1,18 @@
-resource "aws_instance" "SQL_A" {
-    ami = "${lookup(var.aws_ubuntu_amis,var.region)}"
-    instance_type = "t2.large"
-    subnet_id = "${aws_subnet.public-backend-az-a.id}"
-    key_name = "${aws_key_pair.keypair.key_name}"
-    vpc_security_group_ids = ["${aws_security_group.SG-backendservers.id}"]
+resource "aws_instance" "jenkins" {
+    ami = "ami-05a36e1502605b4aa"
+    instance_type = "t2.2xlarge"
+    subnet_id = "${aws_subnet.jenkins.id}"
+    key_name = aws_key_pair.anael.key_name
+    #key_name = "anael1"
+    vpc_security_group_ids = ["${aws_security_group.jenkins.id}"]
+    #this will attach the role to ec2 using profile
+    iam_instance_profile = aws_iam_instance_profile.jenkins5.name
     tags = {
-        Name = "${var.environment}-SQL001"
-        Environment = "${var.environment}"
-        sshUser = "ubuntu"
+        Name = "jenkins-ec2"
+       
     }
+    
+    
+
+    
 }

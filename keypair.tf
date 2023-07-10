@@ -14,10 +14,3 @@ resource "local_file" "ssh_key" {
   filename = "${aws_key_pair.anael.key_name}.pem"
   content = tls_private_key.anael.private_key_pem
 }
-
-
-output "mykey" {
-  value = "${tls_private_key.anael.private_key_pem}}"
-  sensitive = true
-}
-
