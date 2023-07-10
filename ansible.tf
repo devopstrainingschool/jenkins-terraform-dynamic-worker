@@ -1,5 +1,5 @@
 resource "ansible_host" "BASTIONHOSTA" {
-  inventory_hostname = "${aws_instance..public_dns}bastion"
+  inventory_hostname = "${aws_instance.bastion.public_dns}"
   groups = ["bastion"]
   vars = {
       ansible_user = "centos"
