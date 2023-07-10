@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "devopstrainingschool"
-    key    = "3tier/terraform.tfstate"
+    bucket = "devopsschool"
+    key    = "jenkins/terraform.tfstate"
     region = "us-east-2"
   }
 }
