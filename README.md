@@ -1,4 +1,14 @@
-https://harshitdawar.medium.com/launching-a-vpc-with-public-private-subnet-nat-gateway-in-aws-using-terraform-99950c671ce9
+# add the key created to ssh-add
+```
+eval `ssh-agent -s`
+```
+```
+ssh-add keyhere
+```
+### To verified
+```
+ssh-add -l
+```
 
-
-https://harshitdawar.medium.com/launching-a-vpc-with-public-private-subnet-nat-gateway-in-aws-using-terraform-99950c671ce9
+# Install jenkins 
+https://github.com/devopstrainingschool/Jenkins-installation-steps
