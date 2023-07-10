@@ -31,48 +31,20 @@ resource "aws_security_group" "SG-bastionhosts" {
 }
 
 
-# Web sg 
-resource "aws_security_group" "SG-frontendservers" {
-    name = "SG-web"
-    vpc_id = "${aws_vpc.main.id}"
-    description = "Security group for web"
-    ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "TCP"
-        security_groups = ["${aws_security_group.SG-bastionhosts.id}"]
-        description = "Allow incoming SSH traffic from bastion hosts"
-    }
-    ingress {
-        from_port = 80
-        to_port = 80
-        protocol = "TCP"
-        security_groups = ["${aws_security_group.SG-bastionhosts.id}"]
-        description = "Allow incoming SSH traffic from bastion hosts"
-    }
-    egress {
-      from_port = 0
-      to_port = 0
-      cidr_blocks = ["0.0.0.0/0"]
-      protocol = "-1"
-      description = "Allow all outgoing traffic"
-  }
-    tags = {
-        Name = "SG-web"
-    }
-}
 
 # DB sg 
-resource "aws_security_group" "SG-backendservers" {
-    name = "SG-backendservers"
+resource "aws_security_group" "SG-jenkins" {
+    name = "SG-jenkins"
     vpc_id = "${aws_vpc.main.id}"
     description = "Security group for backend servers"
     ingress {
-        from_port = 6432
-        to_port = 6432
-        protocol = "TCP"
-        security_groups = ["${aws_security_group.SG-frontendservers.id}"]
-        description = "Allow incoming PostgreSQL traffic from web servers"
+        description      = "Jenkins port"
+        from_port        = 8080
+        to_port          = 8080
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"] # from anywhere
+        #cidr_blocks      = [aws_vpc.terra-vpc.cidr_block] this is local to the vpc
+         # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
     }
     ingress {
         from_port = 22
@@ -89,9 +61,9 @@ resource "aws_security_group" "SG-backendservers" {
       description = "Allow all outgoing traffic"
   }
     tags = {
-        Name = "SG-db"
+        Name = "SG-Jenkins"
     }
 }
 
 
-# NAT SG
+

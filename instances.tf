@@ -37,9 +37,9 @@ resource "aws_instance" "BASTIONHOST_A" {
 resource "aws_instance" "SQL_A" {
     ami = "${lookup(var.aws_ubuntu_amis,var.region)}"
     instance_type = "t2.large"
-    subnet_id = "${aws_subnet.private-db.id}"
+    subnet_id = "${aws_subnet.private-jenkins.id}"
     key_name = "${aws_key_pair.keypair.key_name}"
-    vpc_security_group_ids = ["${aws_security_group.SG-backendservers.id}"]
+    vpc_security_group_ids = ["${aws_security_group.jenkins.id}"]
     tags = {
         Name = "${var.environment}-SQL001"
         Environment = "${var.environment}"
