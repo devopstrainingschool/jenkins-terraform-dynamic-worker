@@ -17,7 +17,7 @@ resource "aws_subnet" "public-nat" {
   tags = {
       Name = "Subnet-nat"
   }
-
+}
 
 # DB subnet
 resource "aws_subnet" "jenkins" {
