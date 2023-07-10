@@ -21,7 +21,7 @@ resource "aws_instance" "bastion" {
     user         = "ubuntu" # change user"ec2-user" for amz
     timeout = "2m"
     agent = false
-    private_key  = tls_private_key.mykey.private_key_pem #"${file("anael.pem")}" 
+    private_key  = tls_private_key.anael.private_key_pem #"${file("anael.pem")}" 
    }
   depends_on = [
     aws_key_pair.keypair
