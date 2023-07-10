@@ -39,3 +39,4 @@ resource "aws_subnet" "public-lb" {
   tags = {
       Name = "Subnet-lb"
   }
+}
